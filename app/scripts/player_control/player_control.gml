@@ -1,3 +1,8 @@
+/*
+This file contains the functions for player control.
+
+*/
+
 ///@function player_walking_start()
 function player_walking_start(direction_to_walk) {
 	var control = instance_find(obj_control, 0);
