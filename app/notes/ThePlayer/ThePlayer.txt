@@ -1,0 +1,30 @@
+The player character is currently comprised of 5 objects.
+obj_<name>_attack_left
+obj_<name>_attack_right
+obj_<name>_walk_left
+obj_<name>_walk_right
+obj_<name>_idle
+
+
+for each object they must have a create event that registers the object with the player control object. `obj_control` using the following function
+player_register_object_for_control(<id>, <type>);
+
+Example for the walk left object: 
+
+	player_register_object_for_control(id, player_object_type.walk_left);
+	
+	The <id> is the id of the object, <type> is one of the enum values for `player_object_type`
+
+
+Idle Objects:
+	Create Event additional setup 
+		player_idle_setup(<time_to_wait>) sets the wait time in seconds {real}
+
+		Example:
+	
+			player_idle_setup(3)
+	
+			have the idle animation wait for 3 seconds before starting to cycle frames.
+	
+	Alarm 0 event
+		

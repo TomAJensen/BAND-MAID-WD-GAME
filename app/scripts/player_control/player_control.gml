@@ -1,47 +1,12 @@
 /*
 This file contains the functions for player control.
-
 */
 
-///@function player_walking_start()
-function player_walking_start(direction_to_walk) {
-	var control = instance_find(obj_control, 0);
-	if(control.attack_right.visible || control.attack_left.visible) return;	// In attack, so we don't go
+/*
+	All player objects must register with the control object.
+*/
 
-
-	if(control.idle.visible) {
-		// transition from idle to walk right
-		with(control.idle) {
-			visible = false;
-		}
-	} else {
-		// Since idle is not visible and passed the attack checks we can assume walk_right/left is visible. 
-		// determined based on facing direction
-		if(direction_to_walk == LEFT) {
-			control.walk_right.visible = false;
-		} else {
-			control.walk_left.visible = false;
-		}
-	}
-	visible = true;
-	image_index = 0;	// start walk
-	image_speed = orig_image_speeed;
-}
-
-///@function player_walking_stop()
-function player_walking_stop(){
-	var control = instance_find(obj_control, 0);
-	if(control.attack_left.visible || control.attack_right.visible) return; // in attack so return
-
-	visible = false;
-	image_speed = 0;
-	image_index = 0;
-	with(control.idle) {
-		event_perform(ev_other, START_EVU0);
-	}
-}
-
-/// @description register an object for control bye control handler
+/// @description register an object for control by control handler
 /// @functions player_register_object_for_control(id, type)
 function player_register_object_for_control(id, type){
 	
@@ -70,17 +35,101 @@ function player_register_object_for_control(id, type){
 	image_speed = 0;
 }
 
+
+/***********************************************
+	Functions for controlling player walking	
+************************************************/
+
+///@function player_walking_start()
+///@param {integer} direction to walk <LEFT | RIGHT>
+///@description trigger walking state for the player
+function player_walking_start(direction_to_walk) {
+	var control = instance_find(obj_control, 0);
+
+	// if in an attack state player doesn't start walking.
+	if(control.attack_right.visible || control.attack_left.visible) return;	// In attack, so we don't go
+
+	if(control.idle.visible) {
+		// transition from idle to walk right
+		with(control.idle) {
+			visible = false;
+		}
+	} else {
+		// Since idle is not visible and passed the attack checks we can assume walk_right/left is visible. 
+		// determined based on direction which to make invisible.
+		if(direction_to_walk == LEFT) {
+			control.walk_right.visible = false;
+		} else {
+			control.walk_left.visible = false;
+		}
+	}
+	visible = true;
+	image_index = 0;	// start walk
+	image_speed = orig_image_speeed;
+}
+
+///@function player_walking_stop()
+//@description handle stop walking state.
+function player_walking_stop(){
+	var control = instance_find(obj_control, 0);
+	// if player in attack mode exit function
+	if(control.attack_left.visible || control.attack_right.visible) return; // in attack so return
+
+	visible = false;
+	image_speed = 0;
+	image_index = 0;
+	with(control.idle) {
+		event_perform(ev_other, START_EVU0);
+	}
+}
+
+
+
+/***********************************************
+	Functions for controlling player idling	
+************************************************/
+
+///@function player_idle_setup(idle_wait)
+/// @param {Real} idle_wait  Seconds to wait until idle animation begins. 
+///@description Set the delay time until the idle animation starts to cycle.
+function player_idle_setup(time_to_wait = 3) {
+	alarm[0] = room_speed * time_to_wait;
+}
+
 ///@function player_go_idle()
+/// Setup to start idle animation after an attack or walking.
 function player_go_idle(){
 	visible = true;
 	image_index = 0;
 	image_speed = 0;
-	alarm[1] = room_speed;
+	alarm[0] = room_speed;
+}
+
+///@function player_idle_start_animation()
+///@description start the player idle animation
+function player_idle_start_animation() {
+	image_speed = orig_image_speeed;
+}
+
+//******************************************************
+
+
+/***********************************************
+	Functions for controlling player attacks	
+************************************************/
+
+///@function player_attack_setup()
+///@description setup for attack object
+function player_attack_setup() {
+	// make the object invisible.
+	visible=false;
 }
 
 /// @function player_attack_start(attack_directions
+///@description trigger the player attack action 
 function player_attack_start(attack_direction) {
 	var control = instance_find(obj_control, 0);
+	// if already in attack, exit
 	if(control.attack_right.visible || control.attack_left.visible) return;	// already in the attack
 
 
@@ -90,6 +139,7 @@ function player_attack_start(attack_direction) {
 			visible = false;
 		}
 	} else {
+		// so not in attack nor idle
 		// determined based on facing direction
 		switch(attack_direction) {
 			case LEFT:
@@ -106,22 +156,26 @@ function player_attack_start(attack_direction) {
 }
 
 ///@function player_attack_end()
+///@description return to idle or walking after the player attack ends.
 function player_attack_end(){
 	visible = false;
 	var control = instance_find(obj_control, 0);
 	if(control.idle_flag == 0) {
+		// in idle state so trigger event for idle object.
 		var obj = instance_find(control.idle, 0);
 		with(obj) {
 			event_perform(ev_other, START_EVU0);
 		}
 	} else {
 		var obj;
+		// get walk object based on what arrow key is pressed.
 		if(keyboard_check(vk_right)) {
 			obj = instance_find(control.walk_right, 0);
 		} else if(keyboard_check(vk_left)) {
 			obj = instance_find(control.walk_left, 0);
 		}
 	
+		// trigger the event for the walt object.
 		with(obj) {
 			event_perform(ev_other, START_EVU0);
 		}
@@ -129,8 +183,11 @@ function player_attack_end(){
 }
 
 /// @function player_attack_animation_end()
+///@description setup to transition out of attack state
 function player_attack_animation_end(){
 	image_speed = 0
 	alarm[1] = room_speed / 2;
 	image_index = image_number - 1;
 }
+
+// **************************************************************
