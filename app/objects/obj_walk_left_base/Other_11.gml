@@ -1,2 +1,2 @@
 /// @description stop walking left
-event_inherited();
+player_walking_stop();

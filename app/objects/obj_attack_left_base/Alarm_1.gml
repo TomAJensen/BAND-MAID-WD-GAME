@@ -1,2 +1,2 @@
 /// @description return to previous state
-event_inherited();
+player_attack_end();

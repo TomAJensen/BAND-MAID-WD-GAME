@@ -1,2 +1,2 @@
 /// @description default handler
-show_message("objct not defined to handle key up");
+show_message("object for Key Up event not defined. Was it added to level?");

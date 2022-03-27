@@ -1,2 +1,2 @@
 /// @description do idle
-event_inherited();
+player_go_idle();

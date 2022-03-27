@@ -1,15 +1,12 @@
 {
-  "spriteId": {
-    "name": "spr_akane_idle",
-    "path": "sprites/spr_akane_idle/spr_akane_idle.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_idle_base",
-    "path": "objects/obj_idle_base/obj_idle_base.yy",
+    "name": "objParent",
+    "path": "objects/objParent/objParent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -25,17 +22,18 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":1,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Akane",
-    "path": "folders/Objects/Akane.yy",
+    "name": "base_objects",
+    "path": "folders/Objects/base_objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_akane_idle",
+  "name": "obj_attack_left_base",
   "tags": [],
   "resourceType": "GMObject",
 }

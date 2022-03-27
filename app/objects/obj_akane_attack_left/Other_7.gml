@@ -1,2 +1,2 @@
-/// @description
-player_attack_animation_end();
+/// @description attack end
+event_inherited();

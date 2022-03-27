@@ -1,3 +1,3 @@
 /// @description start attack left
 
-event_inherited();
+player_attack_start(LEFT);

@@ -1,2 +1,2 @@
 /// @description go from motionless idle to cycling of frames
-event_inherited();
+player_idle_start_animation();
