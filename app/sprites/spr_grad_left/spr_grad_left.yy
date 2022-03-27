@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_grad_left","path":"sprites/spr_grad_left/spr_grad_left.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_grad_left",
     "tags": [],
     "resourceType": "GMSequence",

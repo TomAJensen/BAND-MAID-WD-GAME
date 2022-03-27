@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprSaiki_walk_right","path":"sprites/sprSaiki_walk_right/sprSaiki_walk_right.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprSaiki_walk_right",
     "tags": [],
     "resourceType": "GMSequence",

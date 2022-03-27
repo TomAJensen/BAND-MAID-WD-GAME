@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_sound_control","path":"sprites/spr_sound_control/spr_sound_control.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_sound_control",
     "tags": [],
     "resourceType": "GMSequence",

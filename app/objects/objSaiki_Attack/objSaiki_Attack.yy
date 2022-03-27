@@ -32,8 +32,8 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Saiki",
-    "path": "folders/Objects/Saiki.yy",
+    "name": "Saiki-old",
+    "path": "folders/Objects/Saiki-old.yy",
   },
   "resourceVersion": "1.0",
   "name": "objSaiki_Attack",

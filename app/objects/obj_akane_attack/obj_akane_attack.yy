@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_akane_attack",
-    "path": "sprites/spr_akane_attack/spr_akane_attack.yy",
+    "name": "spr_akane_attack_right",
+    "path": "sprites/spr_akane_attack_right/spr_akane_attack_right.yy",
   },
   "solid": false,
   "visible": true,

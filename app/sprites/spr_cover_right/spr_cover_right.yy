@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_cover_right","path":"sprites/spr_cover_right/spr_cover_right.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_cover_right",
     "tags": [],
     "resourceType": "GMSequence",

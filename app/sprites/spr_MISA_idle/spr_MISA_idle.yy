@@ -75,7 +75,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_MISA_idle","path":"sprites/spr_MISA_idle/spr_MISA_idle.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_MISA_idle",
     "tags": [],
     "resourceType": "GMSequence",

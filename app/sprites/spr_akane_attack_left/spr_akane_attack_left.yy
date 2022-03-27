@@ -91,7 +91,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_akane_attack_left","path":"sprites/spr_akane_attack_left/spr_akane_attack_left.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_akane_attack_left",
     "tags": [],
     "resourceType": "GMSequence",

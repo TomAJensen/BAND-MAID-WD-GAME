@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_akane_attack",
-    "path": "sprites/spr_akane_attack/spr_akane_attack.yy",
+    "name": "spr_akane_attack_right",
+    "path": "sprites/spr_akane_attack_right/spr_akane_attack_right.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objParent",
-    "path": "objects/objParent/objParent.yy",
+    "name": "obj_attack_right_base",
+    "path": "objects/obj_attack_right_base/obj_attack_right_base.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

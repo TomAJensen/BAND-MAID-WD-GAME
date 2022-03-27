@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_bkg_control","path":"sprites/spr_bkg_control/spr_bkg_control.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_bkg_control",
     "tags": [],
     "resourceType": "GMSequence",

@@ -67,7 +67,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprSaiki_voice_blast","path":"sprites/sprSaiki_voice_blast/sprSaiki_voice_blast.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprSaiki_voice_blast",
     "tags": [],
     "resourceType": "GMSequence",

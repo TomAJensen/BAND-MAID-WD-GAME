@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprSaikiIdle","path":"sprites/sprSaikiIdle/sprSaikiIdle.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprSaikiIdle",
     "tags": [],
     "resourceType": "GMSequence",

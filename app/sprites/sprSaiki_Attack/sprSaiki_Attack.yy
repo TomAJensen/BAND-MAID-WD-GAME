@@ -67,7 +67,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sprSaiki_Attack","path":"sprites/sprSaiki_Attack/sprSaiki_Attack.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sprSaiki_Attack",
     "tags": [],
     "resourceType": "GMSequence",

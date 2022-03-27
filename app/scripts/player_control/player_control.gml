@@ -175,7 +175,7 @@ function player_attack_end(){
 			obj = instance_find(control.walk_left, 0);
 		}
 	
-		// trigger the event for the walt object.
+		// trigger the event for the wait object.
 		with(obj) {
 			event_perform(ev_other, START_EVU0);
 		}
@@ -186,7 +186,7 @@ function player_attack_end(){
 ///@description setup to transition out of attack state
 function player_attack_animation_end(){
 	image_speed = 0
-	alarm[1] = room_speed / 2;
+	alarm[1] = room_speed / 10;
 	image_index = image_number - 1;
 }
 
