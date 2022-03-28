@@ -3,26 +3,32 @@ Script for handling of inputs.
 *****************************************/
 
 ///@function handle_start_attack()
+/// @param {Integer} attack_num
 ///@description trigger the players attack
-function handle_start_attack(){
+function handle_start_attack(attack_num){
 	var layer_id = layer_get_id("Background");
+	var attacks_right = [attack_right, attack_2_right, attack_3_right]
+	var attacks_left = [attack_left, attack_2_left, attack_3_left]
 	with(layer_id) {
 	
 	}
-
+	
 	switch(facing) {
 		case 1:
 			walk_right.visible = false;
-			var ar = instance_find(attack_right, 0);
+			var obj_to_find = attacks_right[attack_num];
+			//var ar = instance_find(attack_right, 0);
+			var ar = instance_find(obj_to_find, 0);
 			with(ar) {
-				show_debug_message("yep, called a bunch")
 				event_perform(ev_other, START_EVU0);
 			}
-			//event_perform_object(ar, ev_other, ev_user0); 
 			break;
+			
 		case -1:
-		walk_left.visible = false ;
-			var al = instance_find(attack_left, 0);
+			walk_left.visible = false ;
+			var obj_to_find = attacks_left[attack_num];
+			//var al = instance_find(attack_left, 0);
+			var al = instance_find(obj_to_find, 0);
 			with(al) {
 				event_perform(ev_other, START_EVU0)
 			}
