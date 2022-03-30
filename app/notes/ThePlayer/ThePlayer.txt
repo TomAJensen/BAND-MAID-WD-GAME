@@ -1,54 +1,23 @@
-The player character is currently comprised of 5 objects.
+The player character is currently comprised of 9 objects.
 obj_<name>_attack_left
 obj_<name>_attack_right
+obj_<name>_attack_2_left
+obj_<name>_attack_2_right
+obj_<name>_attack_3_left
+obj_<name>_attack_3_right
 obj_<name>_walk_left
 obj_<name>_walk_right
 obj_<name>_idle
 
 
-for each player object they must have a create event that registers the object with the player control object. `obj_control` using the following function
-player_register_object_for_control(<id>, <type>);
-
-Example for the walk left object: 
-
-	player_register_object_for_control(id, player_object_type.walk_left);
-	
-	The <id> is the id of the object, <type> is one of the enum values for `player_object_type`
-
-
-Player Idle Objects:
-	Create Event additional setup 
-		player_idle_setup(<time_to_wait>) sets the wait time in seconds {real}
-
-		Example:
-	
-			player_idle_setup(3)
-	
-			have the idle animation wait for 3 seconds before starting to cycle frames.
-	
-	Alarm 0 event
-		player_idle_start_animation();  // start cycling the idle animation frames
-		
-	UserEvent0
-		player_go_idle(); // This event is called when the player stops moving, 
-		
-		
-Player attack objects:
-
-	Create event:
-		the LEFT/RIGHT attack objects must register with the player controller seting the direction (.attack_right or .attack_left)
-			player_register_object_for_control(id, player_object_type.attack_right); 
-
-		The object must set visiblility to false.
-			visible = false;
+For each object associated with the player there is a parent object that each must inherit.
+	Example:
+		obj_<name>_walk_left needs to inherit from obj_walk_left_base
+		obj_<name>_attack_left inherits from obj_attack_left_base
+		obj_<name_attack_2_left inherits from abj_attack_left_base
+		Note: All attack left player objects inherit from obj_attack_left_base and attack right player objects inherit from obj_attack_right_base 
+		Note: Each attack Create event must specify which attack (ATTACK_1, ATTACK_2, ATTACK_3) it is via the following code
+			which_attack=ATTACK_2; // (This should be one of the 3 constants specified above.
+			event_inherited();	// must call the event on the parent to finish setting up attack
 			
-	Alarm 1 event:
-		starts the handling of the attack ending.
-			player_attack_end();
-			
-	Animation End event:
-		player_attack_animation_end();
 
-	User Event 0:
-		this event starts the attack sequence.
-			player_attack_start(RIGHT); // specify RIGHT or LEFT depending on the attack direction
