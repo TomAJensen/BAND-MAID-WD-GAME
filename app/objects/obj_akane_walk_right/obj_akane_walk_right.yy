@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_akane_move",
-    "path": "sprites/spr_akane_move/spr_akane_move.yy",
+    "name": "spr_akane_move_right",
+    "path": "sprites/spr_akane_move_right/spr_akane_move_right.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objParent",
-    "path": "objects/objParent/objParent.yy",
+    "name": "obj_walk_right_base",
+    "path": "objects/obj_walk_right_base/obj_walk_right_base.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -23,11 +23,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":11,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

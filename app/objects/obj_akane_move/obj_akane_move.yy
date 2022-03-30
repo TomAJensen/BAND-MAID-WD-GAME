@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_akane_move",
-    "path": "sprites/spr_akane_move/spr_akane_move.yy",
+    "name": "spr_akane_move_right",
+    "path": "sprites/spr_akane_move_right/spr_akane_move_right.yy",
   },
   "solid": false,
   "visible": true,

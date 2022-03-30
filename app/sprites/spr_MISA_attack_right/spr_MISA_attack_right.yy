@@ -75,7 +75,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_MISA_attack_right","path":"sprites/spr_MISA_attack_right/spr_MISA_attack_right.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_MISA_attack_right",
     "tags": [],
     "resourceType": "GMSequence",

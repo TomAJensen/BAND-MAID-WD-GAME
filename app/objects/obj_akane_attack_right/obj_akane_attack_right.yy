@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_akane_attack",
-    "path": "sprites/spr_akane_attack/spr_akane_attack.yy",
+    "name": "spr_akane_attack_right",
+    "path": "sprites/spr_akane_attack_right/spr_akane_attack_right.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objParent",
-    "path": "objects/objParent/objParent.yy",
+    "name": "obj_attack_right_base",
+    "path": "objects/obj_attack_right_base/obj_attack_right_base.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -24,9 +24,6 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":10,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":1,"eventType":2,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],

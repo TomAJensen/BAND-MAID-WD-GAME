@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_title_bkg","path":"sprites/spr_title_bkg/spr_title_bkg.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_title_bkg",
     "tags": [],
     "resourceType": "GMSequence",

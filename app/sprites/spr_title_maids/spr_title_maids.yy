@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_title_maids","path":"sprites/spr_title_maids/spr_title_maids.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_title_maids",
     "tags": [],
     "resourceType": "GMSequence",

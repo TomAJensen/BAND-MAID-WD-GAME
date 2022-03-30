@@ -9,15 +9,38 @@
 #macro LEFT -1
 #macro RIGHT 1
 
+#macro ATTACK_1_EVENT ev_user15
+#macro INPUT_RIGHT_EVENT ev_user11
+#macro INPUT_LEFT_EVENT ev_user12
+#macro ATTACK_2_EVENT ev_user14
+#macro ATTACK_3_EVENT ev_user13
+#macro ATTACK_1 0
+#macro ATTACK_2 1
+#macro ATTACK_3 2
+
+
 enum player_object_type {
 	idle,
 	attack_left,
 	attack_right,
 	walk_left,
-	walk_right
+	walk_right,
+	attack_2_left,
+	attack_2_right,
+	attack_3_left,
+	attack_3_right,
+
 }
 	
 enum background_control {
 	left,
 	right
+}
+
+enum input_value {
+	input_left,
+	input_right,
+	input_attack_1,
+	input_attack_2,
+	input_attack3
 }

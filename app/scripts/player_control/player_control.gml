@@ -19,7 +19,19 @@ function player_register_object_for_control(id, type){
 			break;
 		case player_object_type.attack_right:
 			player_controller.attack_right = id;
-			break;		
+			break;
+		case player_object_type.attack_2_left:
+			player_controller.attack_2_left = id;
+			break
+		case player_object_type.attack_2_right:
+			player_controller.attack_2_right = id;
+			break;
+		case player_object_type.attack_3_left:
+			player_controller.attack_3_left = id;
+			break
+		case player_object_type.attack_3_right:
+			player_controller.attack_3_right = id;
+			break;
 		case player_object_type.walk_left:
 			player_controller.walk_left = id;
 			break;		
@@ -51,16 +63,26 @@ function player_walking_start(direction_to_walk) {
 
 	if(control.idle.visible) {
 		// transition from idle to walk right
+		x = control.idle.x;
 		with(control.idle) {
+			x = -1000;
 			visible = false;
 		}
 	} else {
 		// Since idle is not visible and passed the attack checks we can assume walk_right/left is visible. 
 		// determined based on direction which to make invisible.
 		if(direction_to_walk == LEFT) {
-			control.walk_right.visible = false;
+			if(control.walk_right != obj_control) {
+				control.walk_right.visible = false;
+				x = control.walk_right.x;
+				control.walk_right.x = -1000;
+			}
 		} else {
-			control.walk_left.visible = false;
+			if(control.walk_left != obj_control) {
+				control.walk_left.visible = false;
+				x = control.walk_left.x;
+				control.walk_left.x = -1000
+			}
 		}
 	}
 	visible = true;
@@ -78,6 +100,8 @@ function player_walking_stop(){
 	visible = false;
 	image_speed = 0;
 	image_index = 0;
+	control.idle.x = x;
+	x = -1000;
 	with(control.idle) {
 		event_perform(ev_other, START_EVU0);
 	}
@@ -123,6 +147,7 @@ function player_idle_start_animation() {
 function player_attack_setup() {
 	// make the object invisible.
 	visible=false;
+	x = -1000;
 }
 
 /// @function player_attack_start(attack_directions
@@ -135,7 +160,9 @@ function player_attack_start(attack_direction) {
 
 	if(control.idle.visible) {
 		// transition from idle to attack left
-		with(control.idle) {
+		x = control.idle.x;
+		with(control.idle) {			
+			x = -1000;
 			visible = false;
 		}
 	} else {
@@ -144,9 +171,13 @@ function player_attack_start(attack_direction) {
 		switch(attack_direction) {
 			case LEFT:
 				control.walk_left.visible = false;
+				x = control.walk_left.x;
+				control.walk_left.x = -1000;
 				break;
 			case RIGHT:
 				control.walk_right.visible = false;
+				x = control.walk_right.x
+				control.walk_right.x = -1000
 				break;
 		}
 	}
@@ -163,6 +194,8 @@ function player_attack_end(){
 	if(control.idle_flag == 0) {
 		// in idle state so trigger event for idle object.
 		var obj = instance_find(control.idle, 0);
+		obj.x = x;
+		x = -1000;
 		with(obj) {
 			event_perform(ev_other, START_EVU0);
 		}
@@ -175,7 +208,9 @@ function player_attack_end(){
 			obj = instance_find(control.walk_left, 0);
 		}
 	
-		// trigger the event for the walt object.
+		// trigger the event for the wait object.
+		obj.x = x;
+		x = -1000;
 		with(obj) {
 			event_perform(ev_other, START_EVU0);
 		}
@@ -186,7 +221,7 @@ function player_attack_end(){
 ///@description setup to transition out of attack state
 function player_attack_animation_end(){
 	image_speed = 0
-	alarm[1] = room_speed / 2;
+	alarm[1] = room_speed / 10;
 	image_index = image_number - 1;
 }
 

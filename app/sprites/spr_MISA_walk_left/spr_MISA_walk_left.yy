@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_MISA_walk_left","path":"sprites/spr_MISA_walk_left/spr_MISA_walk_left.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_MISA_walk_left",
     "tags": [],
     "resourceType": "GMSequence",

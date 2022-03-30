@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_background_handler","path":"sprites/spr_background_handler/spr_background_handler.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_background_handler",
     "tags": [],
     "resourceType": "GMSequence",
