@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_saiki_idle",
-    "path": "sprites/spr_saiki_idle/spr_saiki_idle.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

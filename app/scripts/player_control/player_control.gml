@@ -72,13 +72,17 @@ function player_walking_start(direction_to_walk) {
 		// Since idle is not visible and passed the attack checks we can assume walk_right/left is visible. 
 		// determined based on direction which to make invisible.
 		if(direction_to_walk == LEFT) {
-			control.walk_right.visible = false;
-			x = control.walk_right.x;
-			control.walk_right.x = -1000;
+			if(control.walk_right != obj_control) {
+				control.walk_right.visible = false;
+				x = control.walk_right.x;
+				control.walk_right.x = -1000;
+			}
 		} else {
-			control.walk_left.visible = false;
-			x = control.walk_left.x;
-			control.walk_left.x = -1000
+			if(control.walk_left != obj_control) {
+				control.walk_left.visible = false;
+				x = control.walk_left.x;
+				control.walk_left.x = -1000
+			}
 		}
 	}
 	visible = true;

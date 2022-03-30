@@ -1,3 +1,3 @@
 /// @description 
 direction = 180;
-speed = .5;
+speed = 3;
