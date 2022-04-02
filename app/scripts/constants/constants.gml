@@ -21,7 +21,6 @@
 
 #macro LEFT_DIR 16
 #macro RIGHT_DIR 1
-
 #macro ATTACK_CHECK 2 + 4 + 8
 
 // States
@@ -34,6 +33,7 @@
 #macro ATTACK_2_RIGHT WALKING_RIGHT + ATTACK_2
 #macro ATTACK_3_LEFT WALKING_LEFT + ATTACK_3
 #macro ATTACK_3_RIGHT WALKING_RIGHT + ATTACK_3
+#macro VOID_STATE 1024
 
 
 enum player_object_type {

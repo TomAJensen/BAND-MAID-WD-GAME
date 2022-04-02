@@ -3,7 +3,7 @@
 
 var new_state = get_input_state();
 //print("New State = " + string(new_state));
-switch_state(new_state);
+player_switch_state(new_state);
 
 
 

@@ -6,19 +6,6 @@ This file contains the functions for player control.
 	All player objects must register with the control object.
 */
 
-function get_input_state() {
-	var dir_state = IDLE;
-	dir_state = keyboard_check(vk_left) || gamepad_button_check(0, gp_padl) ? LEFT_DIR : dir_state;
-	dir_state = keyboard_check(vk_right) || gamepad_button_check(0, gp_padr) ? RIGHT_DIR : dir_state;
-
-	var attack_state = keyboard_check(vk_pageup) || gamepad_button_check(0, gp_face3) ? ATTACK_3 : IDLE; // X/square;
-	attack_state = keyboard_check(vk_home) || gamepad_button_check(0, gp_face2) ? ATTACK_2 : attack_state; // B/circle;
-	attack_state = keyboard_check(vk_insert) || gamepad_button_check(0, gp_face1) ? ATTACK_1 : attack_state; // A/Cross;
-
-	return dir_state | attack_state
-}
-
-
 /// @description register an object for control by control handler
 /// @functions player_register_object_for_control(id, type)
 function player_register_object_for_control(id, type){
@@ -58,11 +45,28 @@ function player_register_object_for_control(id, type){
 	}
 	// setup for object	
 	event_inherited();
+	// Stop any animation
 	image_speed = 0;
 }
 
+///@function get_input_state()
+///@description get the state of the control input.
+function get_input_state() {
+	var dir_state = IDLE;
+	dir_state = keyboard_check(vk_left) || gamepad_button_check(0, gp_padl) ? LEFT_DIR : dir_state;
+	dir_state = keyboard_check(vk_right) || gamepad_button_check(0, gp_padr) ? RIGHT_DIR : dir_state;
 
-function switch_state(state) {
+	var attack_state = keyboard_check(vk_pageup) || gamepad_button_check(0, gp_face3) ? ATTACK_3 : IDLE; // X/square;
+	attack_state = keyboard_check(vk_home) || gamepad_button_check(0, gp_face2) ? ATTACK_2 : attack_state; // B/circle;
+	attack_state = keyboard_check(vk_insert) || gamepad_button_check(0, gp_face1) ? ATTACK_1 : attack_state; // A/Cross;
+
+	return dir_state | attack_state
+}
+
+///@function player_switch_state(state)
+///@param state {Integer}
+///@Descripton process the input state
+function player_switch_state(state) {
 	var control = instance_find(obj_control, 0);
 
 	if( state != ATTACK_FINISHED) {
@@ -96,21 +100,26 @@ function switch_state(state) {
 			return;
 		}
 		
+		// Since it is an attack, or the direction into the state. If the bit is already set, doesn't matter.
 		state = state | control.cur_dir
 	}
-	print(string(state));
+	
 	switch(state) {
 		case IDLE:
 			control.active_object = control.idle;
 			break
 		case WALKING_LEFT:
 			control.active_object = control.walk_left;
-			control.cur_dir = LEFT_DIR;
+			// Set the current direction, so attack will happen from idle in this direction
+			control.cur_dir = LEFT_DIR;	
+			// Clear the no repeat flag.
 			control.no_repeat = false;
 			break;
 		case WALKING_RIGHT:
 			control.active_object = control.walk_right;
+			// Set the current direction, so attack will happen from idle in this direction
 			control.cur_dir = RIGHT_DIR;
+			// Clear the no repeat flag.
 			control.no_repeat = false;
 			break;
 		case ATTACK_1_LEFT:
@@ -132,15 +141,20 @@ function switch_state(state) {
 			control.active_object = control.attack_3_right;
 			break;
 		case ATTACK_FINISHED:
-			control.state = 1024;
+			control.state = VOID_STATE;
+			// reset active objects position since it was moved off screen.
 			control.active_object.x = xPos;
 			return;
 	}
+	// Save the new state
 	control.state = state;
+	
+	// Trigger the stop event for the previously active object.
 	with(oldActiveObj) {
 		event_perform(ev_other, STOP_EVU1);
 	}
 	
+	// Trigger the start event for the newly activated object.
 	with(control.active_object) {
 		x = xPos;
 		event_perform(ev_other, START_EVU0)
@@ -153,22 +167,32 @@ function switch_state(state) {
 
 ///@function player_walking_start()
 ///@param {integer} direction to walk <LEFT | RIGHT>
-///@description trigger walking state for the player
-function player_walking_start(direction_to_walk) {
+///@description Handle walking state for the player
+function player_walking_start(walk_direction) {
+	
+	// Set this object as the currently active object.
 	var control = instance_find(obj_control, 0);
-
 	control.active_object = self;
+
+	// start the object animating
 	visible = true;
 	image_index = 0;	// start walk
 	image_speed = orig_image_speeed;
+	
+	layer_hspeed("Background", walk_direction == RIGHT ? -3 : 3);
+	
+	
 }
 
 ///@function player_walking_stop()
 //@description handle stop walking state.
 function player_walking_stop(){
 	
+	// Stop animating and hide
+	visible = false;
 	image_speed = 0;
 	image_index = 0;
+	layer_hspeed("Background", 0);
 }
 
 
@@ -211,47 +235,33 @@ function player_idle_start_animation() {
 function player_attack_setup() {
 	// make the object invisible.
 	visible=false;
-	//x = -1000;
+	x = -1000;
 }
 
-/// @function player_attack_start(attack_direction)
-///@description trigger the player attack action 
-function player_attack_start(attack_direction) {
+/// @function player_attack_start()
+///@description start the attack animation
+function player_attack_start() {
 	visible = true;
 	image_index = 0;	// start attack start
 	image_speed = orig_image_speeed;
 }
 
-/// @function _trigger_start(obj)
-/// @param {assest} obj - object to update position and send start event.
-//function _trigger_start(obj) {
-//		// trigger the event for the wait object.
-//		obj.x = x;
-//		x = -1000;
-//		with(obj) {
-//			obj.visible = true;
-//			event_perform(ev_other, START_EVU0);
-//		}
-//}
-
-//function _reset_to_idle(control) {
-//	var obj = instance_find(control.idle, 0);
-//	_trigger_start(obj);
-//	control.idle_flag = true;
-//}
 
 ///@function player_attack_end()
-///@description return to idle or walking after the player attack ends.
+///@description Handle finishing the attack
 function player_attack_end(){
+	// check and see if the attack input is still down
 	if(!(get_input_state() & which_attack)) {
-		switch_state(ATTACK_FINISHED);
+		// Nope, so handle the attack being finished
+		player_switch_state(ATTACK_FINISHED);
 	} else {
+		// Yep, so reset the alarm
 		player_attack_animation_end();
 	}
 }
 
 /// @function player_attack_animation_end()
-///@description setup to transition out of attack state
+///@description Stop the animation loop, set the alarm to end the attack
 function player_attack_animation_end(){
 	image_speed = 0
 	alarm[1] = room_speed / 10;
