@@ -47,7 +47,7 @@
     "spriteId": {"name":"spr_saiki_idle","path":"sprites/spr_saiki_idle/spr_saiki_idle.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 10.0,
+    "playbackSpeed": 7.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
