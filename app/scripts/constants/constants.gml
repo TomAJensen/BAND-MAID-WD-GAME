@@ -14,9 +14,26 @@
 #macro INPUT_LEFT_EVENT ev_user12
 #macro ATTACK_2_EVENT ev_user14
 #macro ATTACK_3_EVENT ev_user13
-#macro ATTACK_1 0
-#macro ATTACK_2 1
-#macro ATTACK_3 2
+#macro ATTACK_1 2
+#macro ATTACK_2 4
+#macro ATTACK_3 8
+#macro ATTACK_FINISHED 32
+
+#macro LEFT_DIR 16
+#macro RIGHT_DIR 1
+
+#macro ATTACK_CHECK 2 + 4 + 8
+
+// States
+#macro IDLE 0
+#macro WALKING_LEFT 16
+#macro WALKING_RIGHT 1
+#macro ATTACK_1_LEFT WALKING_LEFT + ATTACK_1
+#macro ATTACK_1_RIGHT WALKING_RIGHT + ATTACK_1
+#macro ATTACK_2_LEFT WALKING_LEFT + ATTACK_2
+#macro ATTACK_2_RIGHT WALKING_RIGHT + ATTACK_2
+#macro ATTACK_3_LEFT WALKING_LEFT + ATTACK_3
+#macro ATTACK_3_RIGHT WALKING_RIGHT + ATTACK_3
 
 
 enum player_object_type {
