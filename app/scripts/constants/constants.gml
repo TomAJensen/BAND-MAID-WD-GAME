@@ -8,6 +8,8 @@
 #macro STOP_EVU1 ev_user1
 #macro LEFT -1
 #macro RIGHT 1
+#macro START 999
+#macro BACK 2048
 
 #macro ATTACK_1_EVENT ev_user15
 #macro INPUT_RIGHT_EVENT ev_user11
