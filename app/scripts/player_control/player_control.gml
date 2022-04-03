@@ -59,14 +59,21 @@ function get_input_state() {
 	var attack_state = keyboard_check(vk_pageup) || gamepad_button_check(0, gp_face3) ? ATTACK_3 : IDLE; // X/square;
 	attack_state = keyboard_check(vk_home) || gamepad_button_check(0, gp_face2) ? ATTACK_2 : attack_state; // B/circle;
 	attack_state = keyboard_check(vk_insert) || gamepad_button_check(0, gp_face1) ? ATTACK_1 : attack_state; // A/Cross;
+	
+	var back_state = keyboard_check(vk_escape) || gamepad_button_check(0, gp_select) ? BACK : attack_state;
 
-	return dir_state | attack_state
+	return dir_state | attack_state | back_state
 }
 
 ///@function player_switch_state(state)
 ///@param state {Integer}
 ///@Descripton process the input state
 function player_switch_state(state) {
+	
+	if(state & BACK) {
+		room_goto(rm_game_start);
+	}
+	
 	var control = instance_find(obj_control, 0);
 
 	if( state != ATTACK_FINISHED) {
