@@ -1,7 +1,14 @@
 /// @description handle left right selection
+
+var objSelectedMaids = instance_find(obj_title_maids_selected, 0);
+if(!objSelectedMaids.visible) {
+	return;
+}
+
 var dir = IDLE;
 
 var maids = ["", "akane", "miku", "saiki", ""];
+var _rooms = [rm_game_start, rm_level_1, rm_level_2, rm_level_2, rm_game_start];
 
 if(gamepad_button_check(0, gp_padl) ||  keyboard_check(vk_left)) {
 	dir = LEFT
@@ -38,8 +45,13 @@ switch(dir) {
 		
 	case START:
 		global.which_maid = maids[obj.image_index];
+		var fade_control = instance_find(obj_fader_control, 0);
 		if(global.which_maid != "") {
-			room_goto(rm_level_1);
+			var _room = _rooms[obj.image_index];
+			fade_control.the_next_room = _room;
+			with(fade_control) {
+				event_perform(ev_other, ev_user0);
+			}
 		}
 		break;
 }

@@ -1,4 +1,4 @@
-/// @description setup whic attack needs to be registered
+/// @description setup which attack needs to be registered
 switch(which_attack) {
 	case ATTACK_1:
 		player_register_object_for_control(id, player_object_type.attack_right);
@@ -11,4 +11,5 @@ switch(which_attack) {
 		break;	
 	
 }
+depth = 50;
 player_attack_setup();

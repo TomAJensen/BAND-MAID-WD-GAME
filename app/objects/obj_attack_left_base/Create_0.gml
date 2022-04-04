@@ -11,4 +11,5 @@ switch(which_attack) {
 		break;	
 	
 }
+depth = 50;
 player_attack_setup();
