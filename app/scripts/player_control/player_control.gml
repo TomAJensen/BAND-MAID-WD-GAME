@@ -69,12 +69,16 @@ function get_input_state() {
 ///@param state {Integer}
 ///@Descripton process the input state
 function player_switch_state(state) {
+
+	var control = instance_find(obj_control, 0);
 	
 	if(state & BACK) {
-		room_goto(rm_game_start);
+		with(control.fade_control) {
+			event_perform(ev_other, ev_user0);
+		}
 	}
 	
-	var control = instance_find(obj_control, 0);
+
 
 	if( state != ATTACK_FINISHED) {
 		if(control.state & ATTACK_CHECK > 0) {
@@ -87,19 +91,19 @@ function player_switch_state(state) {
 		}
 	}
 	
-	var xPos = control.active_object.x;
+	var yPos = control.active_object.y;
 	var oldActiveObj = control.active_object;
 	
 	// move all player objects off screen
-	control.idle.x = -1000;
-	control.walk_left.x = -1000;
-	control.walk_right.x = -1000;
-	control.attack_left.x = -1000;
-	control.attack_right.x = -1000;
-	control.attack_2_left.x = -1000;
-	control.attack_2_right.x = -1000;
-	control.attack_3_left.x = -1000;
-	control.attack_3_right.x = -1000;
+	control.idle.y = -1000;
+	control.walk_left.y = -1000;
+	control.walk_right.y = -1000;
+	control.attack_left.y = -1000;
+	control.attack_right.y = -1000;
+	control.attack_2_left.y = -1000;
+	control.attack_2_right.y = -1000;
+	control.attack_3_left.y = -1000;
+	control.attack_3_right.y = -1000;
 
 	if( state & ATTACK_CHECK ) {
 		if(control.no_repeat) {
@@ -150,7 +154,7 @@ function player_switch_state(state) {
 		case ATTACK_FINISHED:
 			control.state = VOID_STATE;
 			// reset active objects position since it was moved off screen.
-			control.active_object.x = xPos;
+			control.active_object.y = yPos;
 			return;
 	}
 	// Save the new state
@@ -163,7 +167,7 @@ function player_switch_state(state) {
 	
 	// Trigger the start event for the newly activated object.
 	with(control.active_object) {
-		x = xPos;
+		y = yPos;
 		event_perform(ev_other, START_EVU0)
 	}
 }
@@ -242,7 +246,7 @@ function player_idle_start_animation() {
 function player_attack_setup() {
 	// make the object invisible.
 	visible=false;
-	x = -1000;
+	y = -1000;
 }
 
 /// @function player_attack_start()
