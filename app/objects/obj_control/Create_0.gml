@@ -1,4 +1,6 @@
 /// @description determin which Maid will play the level and set them up
+
+
 state = VOID_STATE;
 
 
@@ -36,14 +38,24 @@ var miku = [obj_miku_idle,
 			]
 
 var objects = [];
+var current_maid = 0;
 switch(global.which_maid) {
 	case "saiki":
 		objects = saiki;
+		current_maid = 0;
+		break;
+	case "misa":
+		current_maid = 1;
+		break;
+	case "kanami":
+		current_maid = 2;
 		break;
 	case "akane":
+		current_maid = 3;
 		objects = akane;
 		break;
 	case "miku":
+		current_maid = 4;
 		objects = miku;
 		break;
 }	
@@ -51,5 +63,17 @@ switch(global.which_maid) {
 for(var i = 0; i < array_length(objects); i++) {
 	var obj = instance_create_layer(640, 480, "Instances", objects[i]);
 	print("something" + string(obj));
+}
+var inst_stats = instance_create_layer(0,0,"Instances", obj_player_stats);
+inst_stats.current_maid = current_maid;
+inst_stats.health_max = 100;
+inst_stats.current_health = 100;
+inst_stats.super_max = 100;
+inst_stats.current_super = 70;
+inst_stats.secondary_max = 100;
+inst_stats.current_secondary = 100;
+
+with(inst_stats) {
+	event_perform(ev_other, ev_user0);	
 }
 

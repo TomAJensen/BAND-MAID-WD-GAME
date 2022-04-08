@@ -7,8 +7,8 @@ if(!objSelectedMaids.visible) {
 
 var dir = IDLE;
 
-var maids = ["", "akane", "miku", "saiki", ""];
-var _rooms = [rm_game_start, rm_level_1, rm_level_2, rm_level_2, rm_game_start];
+var maids = ["misa", "akane", "miku", "saiki", "kanami"];
+var _rooms = [rm_level_2, rm_level_2, rm_level_2, rm_level_2, rm_level_2];
 
 if(gamepad_button_check(0, gp_padl) ||  keyboard_check(vk_left)) {
 	dir = LEFT

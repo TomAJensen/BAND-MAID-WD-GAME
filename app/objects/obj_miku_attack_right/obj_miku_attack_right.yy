@@ -27,7 +27,10 @@
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"cycle_start","path":"objects/obj_attack_right_base/obj_attack_right_base.yy",},"objectId":{"name":"obj_attack_right_base","path":"objects/obj_attack_right_base/obj_attack_right_base.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"cycle_end","path":"objects/obj_attack_right_base/obj_attack_right_base.yy",},"objectId":{"name":"obj_attack_right_base","path":"objects/obj_attack_right_base/obj_attack_right_base.yy",},"value":"7","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "Miku",
     "path": "folders/Objects/Miku.yy",

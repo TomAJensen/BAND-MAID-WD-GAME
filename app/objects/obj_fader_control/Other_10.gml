@@ -1,2 +1,4 @@
 /// @description start a fade out
-fade_mask_instance = instance_create_layer(0,0,"Instances", obj_fader_out_mask);
+fading = true;
+var _x = camera_get_view_x(view_camera[0]);
+fade_mask_instance = instance_create_layer(_x,0,"Instances", obj_fader_out_mask);
