@@ -79,7 +79,9 @@ function player_switch_state(state) {
 	}
 	
 
-
+	if(control.active_object == noone) {
+		return
+	}
 	if( state != ATTACK_FINISHED) {
 		if(control.state & ATTACK_CHECK > 0) {
 			// currently processing an attack, can't interrupt.
@@ -92,6 +94,7 @@ function player_switch_state(state) {
 	}
 	
 	var yPos = control.active_object.y;
+	var xPos = control.active_object.x;
 	var oldActiveObj = control.active_object;
 	
 	// move all player objects off screen
@@ -168,6 +171,7 @@ function player_switch_state(state) {
 	// Trigger the start event for the newly activated object.
 	with(control.active_object) {
 		y = yPos;
+		x = xPos;
 		event_perform(ev_other, START_EVU0)
 	}
 }
@@ -190,7 +194,8 @@ function player_walking_start(walk_direction) {
 	image_index = 0;	// start walk
 	image_speed = orig_image_speeed;
 	
-	layer_hspeed("Background", walk_direction == RIGHT ? -3 : 3);
+	//layer_hspeed("Background", walk_direction == RIGHT ? -3 : 3);
+	hspeed = walk_direction == RIGHT ? 3 : -3;
 	
 	
 }
@@ -203,7 +208,8 @@ function player_walking_stop(){
 	visible = false;
 	image_speed = 0;
 	image_index = 0;
-	layer_hspeed("Background", 0);
+	//layer_hspeed("Background", 0);
+	hspeed = 0;
 }
 
 

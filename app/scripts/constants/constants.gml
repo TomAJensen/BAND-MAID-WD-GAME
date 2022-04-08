@@ -37,6 +37,7 @@
 #macro ATTACK_3_RIGHT WALKING_RIGHT + ATTACK_3
 #macro VOID_STATE 1024
 
+#macro HEALTH_BAR_FLOAT 5
 
 enum player_object_type {
 	idle,
